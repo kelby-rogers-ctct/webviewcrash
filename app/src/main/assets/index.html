@@ -17,14 +17,14 @@
     <script type="importmap">
       {
         "imports": {
-          "three": "https://threejs.org/build/three.module.js",
-          "three/addons/": "https://threejs.org/examples/jsm/"
+          "three": "https://appassets.androidplatform.net/assets/three.module.js",
+          "objloader": "https://appassets.androidplatform.net/assets/OBJLoader.js"
         }
       }
     </script>
     <script type="module">
       import * as THREE from "three";
-      import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
+      import { OBJLoader } from "objloader";
 
       // Set up the scene, camera, and renderer
       const scene = new THREE.Scene();
