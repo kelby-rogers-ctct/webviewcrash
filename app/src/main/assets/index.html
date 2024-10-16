@@ -14,66 +14,14 @@
     </style>
   </head>
   <body>
+    <dialog id="dialog">Tap anywhere to start</dialog>
     <script type="importmap">
       {
         "imports": {
-          "three": "https://appassets.androidplatform.net/assets/three.module.js",
-          "objloader": "https://appassets.androidplatform.net/assets/OBJLoader.js"
+          "three": "./three.module.js"
         }
       }
     </script>
-    <script type="module">
-      import * as THREE from "three";
-      import { OBJLoader } from "objloader";
-
-      // Set up the scene, camera, and renderer
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-      );
-
-      const light = new THREE.DirectionalLight(0xffffff, 0.5);
-      scene.add(light);
-
-      const ambientLight = new THREE.AmbientLight(0x404040);
-      scene.add(ambientLight);
-
-      const renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
-
-      // Create a cube
-      const objLoader = new OBJLoader();
-      let cube;
-      objLoader.loadAsync("./cube.obj").then((obj) => {
-        cube = obj;
-        scene.add(cube);
-        animate();
-      });
-      camera.position.z = 5;
-
-      // Animation loop
-      function animate() {
-        requestAnimationFrame(animate);
-
-        // Rotate the cube
-        if (!!cube) {
-          cube.rotation.x += 0.01;
-          cube.rotation.y += 0.01;
-        }
-
-        renderer.render(scene, camera);
-      }
-
-      // Handle window resizing
-      window.addEventListener("resize", () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-    </script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
